@@ -2,9 +2,11 @@
     <OlaMundoVue />
     <LifeCycleVue />
     <Pessoa />
+    <Form></Form>
 </template>
 
 <script>
+import Form from './components/Form.vue';
 import LifeCycleVue from './components/LifeCycle.vue'
 import OlaMundoVue from './components/OlaMundo.vue'
 import Pessoa from './components/Pessoa.vue'
@@ -14,7 +16,8 @@ export default {
     components: {
         OlaMundoVue,
         LifeCycleVue,
-        Pessoa
+        Pessoa,
+        Form
     }
 }
 </script>

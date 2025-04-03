@@ -3,8 +3,8 @@
         <p v-if="isWorking">Estou trabalhando no momento</p>
         <p v-else>Estou em busca de novas oportunidades!</p>
         <p>Utilizo as seguintes tecnologias:</p>
-        <ul v-for="item in skills" :key="item">
-            <li>{{ item }}</li>
+        <ul>
+            <li v-for="item, index in skills" :key="index" >{{ item }}</li>
         </ul>
         <div>
             <button @click="showEmail" >{{ textButton }}</button>
