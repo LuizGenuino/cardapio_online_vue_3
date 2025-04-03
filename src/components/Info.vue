@@ -10,6 +10,7 @@
             <button @click="showEmail" >{{ textButton }}</button>
         </div>
         <p v-show="show_email">Mande uma mensagem para: {{ email }}</p>
+        <p>{{ compEmail }}</p>
         <!-- v-bind: ou apenas : é a mesma coisa -->
         <p>Para acessar meu portifolio <a v-bind:href="link" target="_blank">Clique Aqui</a></p>
         <Picture></Picture>
@@ -24,12 +25,15 @@ export default {
     components: {
         Picture
     },
+    props: {
+        compEmail: String,
+        email: String,
+    },
     data() {
         return {
             isWorking: true,
             skills: ["JS", "PHP", "Python"],
             show_email: false,
-            email: "luizgustavo@email.com",
             link: "https://www.google.com",
             textButton: "Mostrar email"
         }
