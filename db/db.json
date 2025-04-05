@@ -100,6 +100,17 @@
         "Bacon"
       ],
       "status": "Solicitado"
+    },
+    {
+      "id": "4fd5",
+      "nome": "Lucas",
+      "carne": "Alcatra",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado"
     }
   ]
 }
