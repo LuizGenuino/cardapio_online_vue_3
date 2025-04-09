@@ -53,7 +53,7 @@ export default {
             bread: null,
             meat: null,
             options: [],
-            msg: null
+            msg: null,
         }
     },
 
@@ -90,7 +90,7 @@ export default {
 
             this.msg = `Pedido Nº ${resp.id} Realizado com Sucesso!`
 
-            setTimeout(()=> {  this.msg = null }, 4000)
+            setTimeout(()=> {  this.msg = null }, 3000)
 
 
             this.name = null;

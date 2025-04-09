@@ -65,15 +65,15 @@
   },
   "status": [
     {
-      "id": 1,
+      "id": "1",
       "tipo": "Solicitado"
     },
     {
-      "id": 2,
+      "id": "2",
       "tipo": "Em produção"
     },
     {
-      "id": 3,
+      "id": "3",
       "tipo": "Finalizado"
     }
   ],
@@ -88,7 +88,7 @@
         "Pepino",
         "Salame"
       ],
-      "status": "Solicitado"
+      "status": "Finalizado"
     },
     {
       "id": "282f",
@@ -99,18 +99,7 @@
         "Cebola roxa",
         "Bacon"
       ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "4fd5",
-      "nome": "Lucas",
-      "carne": "Alcatra",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado"
+      "status": "Finalizado"
     }
   ]
 }

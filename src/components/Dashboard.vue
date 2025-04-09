@@ -1,6 +1,7 @@
 <template>
     <div id="burger-table">
         <div>
+            <Message :msg="msg" v-show="msg" />
             <div id="burger-table-heading">
                 <div class="order-id">#:</div>
                 <div>CLiente:</div>
@@ -10,22 +11,22 @@
                 <div>Ações:</div>
             </div>
             <div id="burger-table-rows">
-                <div class="burger-table-row">
-                    <div class="order-number"></div>
-                    <div>Joao</div>
-                    <div>Pão de Trigo</div>
-                    <div>Maminha</div>
+                <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
+                    <div class="order-number">{{ burger.id }}</div>
+                    <div>{{ burger.nome }}</div>
+                    <div>{{ burger.pao }}</div>
+                    <div>{{ burger.cane }}</div>
                     <div>
                         <ul>
-                            <li>Salame</li>
-                            <li>Tomate</li>
+                            <li v-for="(item, index) in burger.opcionais" :key="index">{{ item }}</li>
                         </ul>
                     </div>
                     <div>
-                        <select name="status" class="satus">
-                            <option value="">Selecione</option>
+                        <select name="status" class="satus" @change="updateBurguer($event, burger.id)">
+                            <option v-for="item in status" :key="item.id" :value="item.tipo"
+                                :selected="burger.status == item.tipo">{{ item.tipo }}</option>
                         </select>
-                        <button class="delete-btn">Cancelar</button>
+                        <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -33,14 +34,69 @@
     </div>
 </template>
 <script>
+import Message from './Message.vue';
 export default {
+    components: { Message },
     name: "Dashboard",
     data() {
         return {
             burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null,
         }
+    },
+
+    methods: {
+        async getPedidos() {
+            const req = await fetch("http://localhost:3000/burgers");
+            const data = await req.json();
+            this.burgers = data;
+        },
+
+        async getStatus() {
+            const req = await fetch("http://localhost:3000/status");
+            const data = await req.json();
+            this.status = data;
+        },
+
+        async deleteBurger(id) {
+            console.log(id);
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: "DELETE"
+            });
+            const resp = await req.json();
+
+            this.getPedidos()
+
+            this.msg = `Pedido Nº ${resp.id} Removido com Sucesso!`
+
+            setTimeout(() => { this.msg = null }, 3000)
+        },
+
+        async updateBurguer(event, id) {
+            const option = event.target.value;
+
+            const datJson = JSON.stringify({ status: option });
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: datJson
+            })
+
+            const resp = await req.json()
+
+            this.msg = `Pedido Nº ${resp.id} Atualizado com Sucesso!`
+
+            setTimeout(() => { this.msg = null }, 3000)
+        }
+    },
+
+    mounted() {
+        this.getPedidos()
+        this.getStatus()
     }
 }
 </script>
