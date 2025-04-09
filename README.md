@@ -1,5 +1,7 @@
 # hamburguer_vue_3
 
+PlayList base: [Youtube](https://www.youtube.com/watch?v=wsAQQioPIJs&list=PLnDvRpP8BnezDglaAvtWgQXzsOmXUuRHL)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
