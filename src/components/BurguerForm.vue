@@ -2,7 +2,7 @@
     <div>
         <Message :msg="msg" v-show="msg" />
         <div>
-            <form id="burguer-form" @submit="createBurguer">
+            <form id="burger-form" @submit="createBurger">
                 <div class="input-container">
                     <label for="name">Nome do Cliente:</label>
                     <input type="text" id="name" name="name" v-model="name" placeholder="Digite seu Nome">
@@ -67,7 +67,7 @@ export default {
             this.optionsList = data.opcionais;
         },
 
-        async createBurguer(e) {
+        async createBurger(e) {
             e.preventDefault();
 
             const data = {
@@ -108,7 +108,7 @@ export default {
 </script>
 
 <style scoped>
-#burguer-form {
+#burger-form {
     max-width: 400px;
     margin: 0 auto;
 }
